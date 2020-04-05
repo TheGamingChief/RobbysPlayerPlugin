@@ -2,14 +2,15 @@
     File name: __init__.py
     Author: /u/robbychampagne, ThePyrotechnic
     Date created: 9/29/2018
-    Date last modified: 9/29/2018
+    Date last modified: 4/4/2020
+    Last edited by: TheGamingChief
 '''
 from twisted.internet import task
 
 CONFIG = {
     'interval': 1,
-    'message_singular': 'There is one player online',
-    'base_message': 'There are {} players online'
+    'message_singular': 'There is currently one player online',
+    'base_message': 'There are currently {players} players online'
 }
 
 
@@ -31,7 +32,7 @@ class RobbysPlayerPlugin:
             message = CONFIG.get('message_singular')
 
         else:
-            message = CONFIG.get('base_message').format(player_count)
+            message = CONFIG.get('base_message').format(players=player_count)
 
         command_to_fire = 'say -1 {0}'.format(message)
         self.bec._Bec_queuelist.append(command_to_fire)
